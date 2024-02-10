@@ -4,10 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class PairHandler implements HandEvaluator {
+public class TwoPairHandler implements  HandEvaluator {
+
     private HandEvaluator nextEvaluator;
 
-    public PairHandler(HandEvaluator nextEvaluator) {
+    public TwoPairHandler(HandEvaluator nextEvaluator) {
         this.nextEvaluator = nextEvaluator;
     }
 
@@ -30,12 +31,10 @@ class PairHandler implements HandEvaluator {
             }
         }
 
-        if (pairs == 1) {
-            System.out.println("This hand contains a pair.");
+        if (pairs == 2) {
+            System.out.println("This hand contains  two pairs.");
         } else if (nextEvaluator != null) {
             nextEvaluator.evaluate(hand);
-        } else {
-            System.out.println("This hand no combinations.");
         }
     }
 }

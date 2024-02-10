@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class PairHandler implements HandEvaluator {
+public class FourOfKindHandler implements HandEvaluator {
     private HandEvaluator nextEvaluator;
 
-    public PairHandler(HandEvaluator nextEvaluator) {
+    public FourOfKindHandler(HandEvaluator nextEvaluator) {
         this.nextEvaluator = nextEvaluator;
     }
 
@@ -22,20 +22,10 @@ class PairHandler implements HandEvaluator {
             valueCount.put(value, count + 1);
         }
 
-
-        long pairs = 0;
-        for (int count : valueCount.values()) {
-            if (count == 2) {
-                pairs++;
-            }
-        }
-
-        if (pairs == 1) {
-            System.out.println("This hand contains a pair.");
+        if (valueCount.containsValue(4)) {
+            System.out.println("This hand contains four of a kind.");
         } else if (nextEvaluator != null) {
             nextEvaluator.evaluate(hand);
-        } else {
-            System.out.println("This hand no combinations.");
         }
     }
 }
